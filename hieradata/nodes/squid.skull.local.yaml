@@ -1,0 +1,6 @@
+---
+squid::ipaddress : '10.1.1.210'
+squid::hostname  : "%{::fqdn}"
+squid::customip  : '60.242.29.253'
+squid::cachesize : '2000'
+squid::portnumber: '3128'

@@ -1,0 +1,10 @@
+<VirtualHost *:80>
+ServerName <%= @vhostname %>
+        DocumentRoot "<%= @docroot %>/<%= @vhostname %>"
+		RewriteEngine on
+		CustomLog /var/log/access.log combined
+		ErrorLog /var/log/error.log
+        <Directory "<%= @docroot %>/<%= @vhostname %>">
+		AllowOverride All
+		</Directory>
+</VirtualHost>

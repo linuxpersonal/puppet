@@ -1,0 +1,19 @@
+---
+# Apache Hiera
+
+apache::docroot       : '/var/www/html'
+apache::logdir        : '/var/log/apache/access.log'
+apache::apache_ip     : "%{::ipaddress}"
+apache::con_file      : 'httpd.conf'
+apache::con_owner     : 'root'
+apache::con_group     : 'root'
+apache::con_mode      : '0664'
+apache::vhosts        : ["%{::fqdn}", 'test.com']
+apache::conf_dir      : '/etc/httpd/conf/httpd.conf'
+apache::vhost_dir     : '/etc/httpd/sites-enabled'  
+apache::redhat_apache : ['httpd', 'mariadb', 'mariadb-server', 'php', 'php-common']
+apache::redhat_php    : ['php-opcache', 'php-devel', 'php-pecl-apcu', 'php-cli', 'php-pear', 'php-pdo', 'php-mysqlnd', 'php-pgsql', 'php-pecl-mongodb', 'php-pecl-redis', 'php-pecl-memcache', 'php-pecl-memcached', 'php-gd', 'php-mbstring', 'php-mcrypt', 'php-xml']
+apache::redhat_service: ['httpd', 'mariadb']
+apache::debian_apache  : ['apache2', 'mariadb', 'mariadb-server', 'php-devel', 'php', 'php-common']
+apache::debian_php    : ['php-opcache', 'php-pecl-apcu', 'php-cli', 'php-pear', 'php-pdo', 'php-mysqlnd', 'php-pgsql', 'php-pecl-mongodb', 'php-pecl-redis', 'php-pecl-memcache', 'php-pecl-memcached', 'php-gd', 'php-mbstring', 'php-mcrypt', 'php-xml']
+apache::debian_service: ['apache2', 'mariadb']
