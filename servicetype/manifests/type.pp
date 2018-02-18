@@ -3,15 +3,15 @@ class servicetype::type (
 ) {
 
 	file { ['/etc/puppetlabs/facter/',
-					'/etc/puppetlabs/facter/facts.d',
-				 ]:
+		'/etc/puppetlabs/facter/facts.d',
+		]:
 		ensure  => directory,
 		recurse => true,
 	}                                                                                                                                                                                                                                              
 
 	file { '/etc/puppetlabs/facter/facts.d/service.txt':
 		ensure  => file,
-		content => "service_type=${service_type}",
+		content => "service=${service_type}",
 	}
 
 }
