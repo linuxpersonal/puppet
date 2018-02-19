@@ -4,3 +4,4 @@ contributer_name  : "Chris Do"
 ssh::sshport      : '22'
 ssh::permitroot   : 'yes'
 zabbix::serverip  : '10.1.1.112'
+ohmyzsh::theme    : 'robbyrussell'

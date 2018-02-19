@@ -1,8 +1,10 @@
 ---
-service_type: nginx
+service_type   : nginx
+ohmyzsh::theme : cute-theme
 
 classes:
     - defaults
     - defaults::test
     - ohmyzsh::install
+    - ohmyzsh::config
     - nginx

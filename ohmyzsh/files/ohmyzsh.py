@@ -65,8 +65,6 @@ git
 )
 ''',
                                   'plugins=(git zsh-autosuggestions)')
-                    r = r.replace('ZSH_THEME="robbyrussell"',
-                                  'ZSH_THEME="agnoster"')
                     f.write(r)
                 print("Writing to file successfull")
             else:
