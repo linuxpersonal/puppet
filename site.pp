@@ -6,6 +6,11 @@ node default {
   include defaults
 }
 
+node 'puppet.skull.local' {
+  include defaults
+  vim::install { 'root': }
+}
+
 node 'nginx.skull.local' {
   hiera_include('classes')
   sshservice::createuser { 'admin':

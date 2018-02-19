@@ -55,11 +55,11 @@ call vundle#begin()
     Plugin 'scrooloose/syntastic'               " Syntax checking plugin for Vim
     Plugin 'davidhalter/jedi-vim'
     Plugin 'auto-pairs-gentle'
-    " Plugin 'Valloric/YouCompleteMe'
     Plugin 'SirVer/ultisnips'
     Plugin 'vim-scripts/closetag.vim'
     Plugin 'mattn/emmet-vim'
-			    \
+    Plugin 'rodjek/vim-puppet'
+
 call vundle#end()                           " required
 filetype on
 filetype plugin on
