@@ -1,4 +1,7 @@
 ---
+classes:
+    - nodes::ansible  
+
 squid::ipaddress : '10.1.1.210'
 squid::hostname  : "%{::fqdn}"
 squid::customip  : '60.242.29.253'

@@ -1,4 +1,7 @@
 ---
+classes:
+    - nodes::ansible
+
 service_type: ansible
 ssh::sshport: '22'
 ssh::permitroot: 'yes'

@@ -1,7 +1,5 @@
 ---
-ohmyzsh::theme: 'cute-theme'
-
 classes:
   - defaults
-  - ohmyzsh::install
-  - ohmyzsh::config
+
+ohmyzsh::theme: 'cute-theme'

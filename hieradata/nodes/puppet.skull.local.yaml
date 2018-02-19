@@ -1,2 +1,3 @@
 ---
-domain_name: xen.linuxpersonal.com
+classes:
+    - nodes::puppet
