@@ -1,5 +1,4 @@
 ---
-classes:
-  - defaults
+classes: nodes::ddns
 
 ohmyzsh::theme: 'cute-theme'

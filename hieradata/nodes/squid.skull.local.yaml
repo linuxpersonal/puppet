@@ -1,6 +1,5 @@
 ---
-classes:
-    - nodes::ansible  
+classes: nodes::ansible  
 
 squid::ipaddress : '10.1.1.210'
 squid::hostname  : "%{::fqdn}"

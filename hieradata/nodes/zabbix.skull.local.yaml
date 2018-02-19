@@ -1,6 +1,5 @@
 ---
-classes:
-    - nodes::zabbix
+classes: nodes::zabbix
 
 service_type     : 'zabbix'
 zabbix::serverip : "10.1.1.112"

@@ -1,3 +1,2 @@
 ---
-classes:
-    - nodes::puppet
+classes: nodes::puppet

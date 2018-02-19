@@ -1,3 +1,2 @@
 ---
-classes:
-    - nodes::kvm
+classes: nodes::kvm

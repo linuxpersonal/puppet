@@ -1,3 +1,2 @@
 ---
-classes:
-    - nodes::management
+classes: nodes::management
