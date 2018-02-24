@@ -4,6 +4,7 @@ class nagios::service {
       service { 'nagios':
         enable  => true,
         ensure  => running,
+        require => Package['nagios'],
       }
     }
   
@@ -11,6 +12,7 @@ class nagios::service {
       service { 'nrpe':
         enable  => true,
         ensure  => running,
+        require => Package['nrpe'],
     }
   }
 }

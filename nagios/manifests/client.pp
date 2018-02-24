@@ -4,7 +4,6 @@ class nagios::client (
   $root = hiera('nagios::root'),
 ){
  
-  include nagios::service
 
   package { $clientpkgs: 
     ensure =>  present,
@@ -21,4 +20,5 @@ class nagios::client (
     mode   => '655',
     source => 'puppet:///modules/nagios/plugins/check_mem',
   }
+  include nagios::service
 }
