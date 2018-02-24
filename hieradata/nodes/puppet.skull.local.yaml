@@ -1,2 +1,6 @@
 ---
 classes: nodes::puppet
+
+### Variables ###
+#
+nagios::root: /dev/mapper/centos_puppet--o-root 

@@ -1,6 +1,6 @@
 class nodes::ddns {
 
   include defaults
-  ohmyzsh::config
+  include ohmyzsh::config
 
 }
