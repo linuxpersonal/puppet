@@ -2,7 +2,7 @@ class nodes::nagios {
 
   include defaults
   include apache
-  include nagios
+  include nagios::server
 
   nagios::clients::add { 
     'puppet.skull.local':

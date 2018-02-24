@@ -1,47 +1,47 @@
 define host{
-            use                     linux-server
+            use                     linux-server,host-pnp
             host_name               <%= @hostname %>
             alias                   <%= @hostname %>
             address                 <%= @ipaddress %>
 }
 
 define service{
-            use                             local-service
+            use                             local-service,srv-pnp
             host_name                       <%= @hostname %>
             service_description             SWAP Usage
             check_command                   check_nrpe!check_swap
 }
 
 define service{
-            use                             local-service
+            use                             local-service,srv-pnp
             host_name                       <%= @hostname %>
             service_description             Root / Partition
             check_command                   check_nrpe!check_root
 }
 
 define service{
-            use                             local-service
+            use                             local-service,srv-pnp
             host_name                       <%= @hostname %>
             service_description             Total Processes
             check_command                   check_nrpe!check_total_procs
 }
 
 define service{
-            use                             local-service
+            use                             local-service,srv-pnp
             host_name                       <%= @hostname %>
             service_description             Current Load
             check_command                   check_nrpe!check_load
 }
 
 define service{
-            use                             local-service
+            use                             local-service,srv-pnp
             host_name                       <%= @hostname %>
             service_description             Memory Usage
             check_command                   check_nrpe!check_mem
 }
 
 define service{
-            use                             local-service
+            use                             local-service,srv-pnp
             host_name                       <%= @hostname %>
             service_description             SSH Check
             check_command                   check_nrpe!check_ssh

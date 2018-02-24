@@ -3,11 +3,23 @@ class nagios::server (
   $nagiospkgs = [ 'nagios', 'nagios-common', 'nagios-plugins-all','nagios-plugins-nrpe' ]
 ){
 
-  package { $basepkgs:
-    ensure => present,
+  package { 
+    $basepkgs:
+    ensure => present;
+    $nagiospkgs:
+    ensure => present;
   }
-  package { $nagiospkgs:
-    ensure => present,
+
+  file {
+    "/usr/local/nagios/etc/nagios.cfg":
+      ensure => present,
+      source => 'puppet:///modules/nagios/config/nagios.cfg';
+    "/usr/local/nagios/etc/objects/commands.cfg":
+      ensure => present,
+      source => 'puppet:///modules/nagios/config/commands.cfg';
+    "//usr/lib64/nagios/plugins":
+      ensure => link,
+      target => "/usr/local/nagios/libexec",
   }
 
 }
