@@ -19,4 +19,5 @@ class nagios::service {
         require => Package[$nrpepkg],
     }
   }
+
 }
