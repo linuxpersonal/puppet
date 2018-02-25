@@ -20,7 +20,7 @@ class nagios::server (
     "/usr/local/nagios/etc/objects/templates.cfg":
       ensure => present,
       source => 'puppet:///modules/nagios/config/templates.cfg';
-    "//usr/lib64/nagios/plugins":
+    "/usr/lib64/nagios/plugins":
       ensure => link,
       target => "/usr/local/nagios/libexec",
   }

@@ -1,5 +1,6 @@
 class defaults::services (
   $chronyd      = $::defaults::params::chronyd,
+  $update       = $::defaults::params::update,
 ) {
     service { $chronyd:
      ensure  => running,
@@ -12,6 +13,10 @@ class defaults::services (
     }
   
     exec { '/usr/bin/updatedb':
+      schedule => 'update-daily',
+    }
+    
+    exec { $update:
       schedule => 'update-daily',
     }
 }
