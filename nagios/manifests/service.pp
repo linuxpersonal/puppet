@@ -1,5 +1,10 @@
 class nagios::service {
 
+  case $facts['osfamily'] {
+    'RedHat': { $nrpepkg = "nrpe" } 
+    'Debian': { $nrpepkg = "nagios-nrpe-server" }
+  }
+
     if $::hostname == "nagios" {
       service { 'nagios':
         enable  => true,
@@ -8,10 +13,10 @@ class nagios::service {
     }
   
     unless $::hostname == "nagios" {
-      service { 'nrpe':
+      service { $nrpepkg:
         enable  => true,
         ensure  => running,
-        require => Package['nrpe'],
+        require => Package[$nrpepkg],
     }
   }
 }

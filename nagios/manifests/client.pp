@@ -1,9 +1,25 @@
 class nagios::client (
-  $clientpkgs = [ 'nrpe', 'nagios-plugins-all' ],
   $ipaddress = $::ipaddress,
-  $root = hiera('nagios::root'),
 ){
- 
+
+  case $facts['osfamily'] {
+    'RedHat': {
+      $clientpkgs = [ 'nrpe', 'nagios-plugins-all' ]
+      $nrpe_conf  = 'redhat.erb'
+      $pluginlo   = '/usr/lib64/nagios/plugins/check_mem'
+      $nrpepkg  = 'nrpe'
+    }
+    
+    'Debian': {
+      $clientpkgs = [ 'nagios-nrpe-server', 'nagios-nrpe-plugin', 'nagios-plugins-basic' ]
+      $nrpe_conf  = 'debian.erb'
+      $pluginlo   = '/usr/lib/nagios/plugins/check_mem'
+      $nrpepkg  = 'nagios-nrpe-server'
+    }
+
+    default: { notify {"OS not supported": } }
+  
+  }
 
   package { $clientpkgs: 
     ensure =>  present,
@@ -11,14 +27,16 @@ class nagios::client (
 
   file { '/etc/nagios/nrpe.cfg': 
     ensure  => present,
-    content => template('nagios/nrpe.erb'),
-    notify  => Package['nrpe'],
+    content => template("nagios/nrpe/${nrpe_conf}"),
+    require  => Package[$nrpepkg],
     }          
 
-  file { '/usr/lib64/nagios/plugins/check_mem':
+  file { $pluginlo:
     ensure => present,
     mode   => '655',
     source => 'puppet:///modules/nagios/plugins/check_mem',
   }
+
   include nagios::service
+
 }

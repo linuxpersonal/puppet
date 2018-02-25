@@ -21,5 +21,12 @@ class nodes::nagios {
       ipaddress => "10.1.1.210"; 
     'nginx.skull.local':
       ipaddress => "10.1.1.202"; 
+    'sickrage.skull.local':
+      ipaddress => "10.1.1.215"; 
+    'cloud.linuxpersonal.com':
+      ipaddress => "108.61.96.41"; 
+    'linuxpersonal.com':
+      source    => "noswap",
+      ipaddress => "45.32.242.149"; 
   }
 }

@@ -1,11 +1,25 @@
 define nagios::clients::add (
   $hostname = $name,
+  $source = undef,
   $ipaddress,
 ){
-  file { "/etc/nagios/servers/${hostname}.cfg":
-    ensure  => present,
-    content => template('nagios/host.erb'),
-    notify  => Service['nagios'],
+
+  if $source {
+
+    file { "/etc/nagios/servers/${hostname}.cfg":
+      ensure  => present,
+      content => template("nagios/hosttype/${source}.erb"),
+      notify  => Service['nagios'],
+    }
+
+  } else {
+
+    file { "/etc/nagios/servers/${hostname}.cfg":
+      ensure  => present,
+      content => template('nagios/hosttype/default.erb'),
+      notify  => Service['nagios'],
+    }
+
   }
   include nagios::service
 }

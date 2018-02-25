@@ -14,7 +14,10 @@ class defaults {
         include nagios::client
       }
     }
-      'Debian': {       
+      'Debian': {
+        unless $::fqdn == 'nagios.skull.local' {
+          include nagios::client
+        }
       }   
   }   
 }
