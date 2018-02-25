@@ -7,4 +7,5 @@ define nagios::clients::add (
     content => template('nagios/host.erb'),
     notify  => Service['nagios'],
   }
+  include nagios::service
 }

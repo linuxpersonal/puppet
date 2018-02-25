@@ -4,7 +4,6 @@ class nagios::service {
       service { 'nagios':
         enable  => true,
         ensure  => running,
-        require => Package['nagios'],
       }
     }
   
