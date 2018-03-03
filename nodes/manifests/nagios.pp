@@ -24,9 +24,10 @@ class nodes::nagios {
     'sickrage.skull.local':
       ipaddress => "10.1.1.215"; 
     'cloud.linuxpersonal.com':
+      source    => "webserver",
       ipaddress => "108.61.96.41"; 
     'linuxpersonal.com':
-      source    => "noswap",
+      source    => "webnoswap",
       ipaddress => "45.32.242.149"; 
   }
 }

@@ -8,10 +8,19 @@ define host{
 define service{
             use                             local-service,srv-pnp
             host_name                       <%= @hostname %>
+            service_description             Check HTTP
+            check_command                   check_nrpe!check_http
+            contact_groups                  admins
+            contacts                        nagiosadmin 
+}
+
+define service{
+            use                             local-service,srv-pnp
+            host_name                       <%= @hostname %>
             service_description             SWAP Usage
             check_command                   check_nrpe!check_swap
             contact_groups                  admins
-            contacts                        nagiosadmin
+            contacts                        nagiosadmin 
 }
 
 define service{
@@ -20,7 +29,7 @@ define service{
             service_description             Root / Partition
             check_command                   check_nrpe!check_root
             contact_groups                  admins
-            contacts                        nagiosadmin
+            contacts                        nagiosadmin 
 }
 
 define service{
@@ -29,7 +38,7 @@ define service{
             service_description             Total Processes
             check_command                   check_nrpe!check_total_procs
             contact_groups                  admins
-            contacts                        nagiosadmin
+            contacts                        nagiosadmin 
 }
 
 define service{
@@ -38,7 +47,7 @@ define service{
             service_description             Current Load
             check_command                   check_nrpe!check_load
             contact_groups                  admins
-            contacts                        nagiosadmin
+            contacts                        nagiosadmin 
 }
 
 define service{
@@ -47,7 +56,7 @@ define service{
             service_description             Memory Usage
             check_command                   check_nrpe!check_mem
             contact_groups                  admins
-            contacts                        nagiosadmin
+            contacts                        nagiosadmin 
 }
 
 define service{
@@ -56,5 +65,14 @@ define service{
             service_description             SSH Check
             check_command                   check_nrpe!check_ssh
             contact_groups                  admins
-            contacts                        nagiosadmin
+            contacts                        nagiosadmin 
+}
+
+define service{
+            use                             local-service,srv-pnp
+            host_name                       <%= @hostname %>
+            service_description             Check SMTP
+            check_command                   check_nrpe!check_smtp
+            contact_groups                  admins
+            contacts                        nagiosadmin 
 }
