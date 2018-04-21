@@ -1,5 +1,6 @@
 class ohmyzsh::config ( 
-$theme = hiera('ohmyzsh::theme')
+$theme = hiera('ohmyzsh::theme'),
+$alias = hiera('ohmyzsh::alias')
 ) {
     file { '/root/.zshrc':
     ensure =>  present,

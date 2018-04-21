@@ -3,3 +3,8 @@ classes: nodes::puppet
 
 ### Variables ###
 ohmyzsh::theme : cute-theme
+ohmyzsh::alias :
+    - name: prun
+      command: puppet agent -t
+    - name: pup
+      command: cd /etc/puppetlabs/code/modules
