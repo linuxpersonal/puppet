@@ -1,4 +1,4 @@
 class nodes::ansible {
-include defaults
-include ohmyzsh::config
+  include defaults
+  include ohmyzsh::config
 }

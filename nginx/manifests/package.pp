@@ -5,6 +5,6 @@ class nginx::package (
     package { [ $package_nginx, $package_php ]:
         ensure          => present,
         install_options => [ { '--enablerepo' => 'remi-php71' } ],
-        require         => Package[ 'remi-release-7.3-2.el7.remi.noarch' ]
+        require         => Package[ 'remi-release-7.4-2.el7.remi.noarch' ]
         } 
 }

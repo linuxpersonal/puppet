@@ -8,7 +8,7 @@ $remi_source = "http://rpms.remirepo.net/enterprise/remi-release-7.rpm"
       enabled  => 1,
       gpgcheck => 0,
     }
-    package { "remi-release-7.3-2.el7.remi.noarch":
+    package { "remi-release-7.4-2.el7.remi.noarch":
       provider        => 'rpm',
       source          => $remi_source,
       ensure          => 'present',
