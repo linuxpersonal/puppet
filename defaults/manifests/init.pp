@@ -5,10 +5,13 @@ class defaults {
   include defaults::services
   include defaults::sshkeys
   
+  defaults::yumconf { "proxy":
+    squidproxy => true
+  }
+  
   case $::osfamily {
     'Redhat': {
-      include sshservice::config
-      include squid::clients      
+      include sshservice::config      
       include servicetype::type
       unless $::fqdn == 'nagios.skull.local' {
         include nagios::client

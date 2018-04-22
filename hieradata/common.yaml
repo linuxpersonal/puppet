@@ -1,12 +1,16 @@
 ---
 service_type      : "default"
 contributer_name  : "Chris Do"
+
 ssh::sshport      : '22'
 ssh::permitroot   : 'yes'
-zabbix::serverip  : '10.1.1.112'
+
 nagios::root      : '/dev/mapper/centos-root'
+
 ohmyzsh::theme    : 'robbyrussell'
 ohmyzsh::alias    :
-    - name: prun
+    - name:    prun
       command: puppet agent -t
 
+squid::squidip    : "10.1.1.210"
+squid::squidport  : "3128"
