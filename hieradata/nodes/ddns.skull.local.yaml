@@ -1,2 +1,20 @@
 ---
 classes: nodes::ddns
+
+dhcpd::manual:
+    - host:    'ovirtnuc'
+      fqdn:    'ovirtnuc.skull.local'
+      mac:     'f4:4d:30:66:7f:43'
+      address: '10.1.1.110'
+
+dhcpd::dns:       ['10.1.1.60,', '10.1.1.61,', '8.8.8.8'] 
+dhcpd::domain:    'skull.local'
+dhcpd::subnet:    '10.1.1.0'
+dhcpd::netmask:   '255.255.255.0'
+dhcpd::min_ip:    '10.1.1.200'
+dhcpd::max_ip:    '10.1.1.250'
+dhcpd::broadcast: '10.1.1.255'
+dhcpd::gateway:   '10.1.1.1'
+dhcpd::lease:     '6000'
+dhcpd::max_lease: '12000'
+dhcpd::reverse:   '1.1.10'
