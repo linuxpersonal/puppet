@@ -1,6 +1,6 @@
 class dhcpd::conf (
-	$manual     = hiera('dhcpd::manual'),
-	$dns        = hiera('dhcpd::dns'),
+  $manual     = hiera('dhcpd::manual'),
+  $dns        = hiera('dhcpd::dns'),
   $domain     = hiera('dhcpd::domain'),
   $subnet     = hiera('dhcpd::subnet'),
   $netmask    = hiera('dhcpd::netmask'),
