@@ -7,15 +7,15 @@ class nodes::nagios {
   nagios::clients::add { 
     'puppet.skull.local':
       ipaddress => "10.1.1.208";
-    'white.skull.local':
+    'red.skull.local':
       source    => "docker",
       ipaddress => "10.1.1.2";
-    'red.skull.local':
+    'white.skull.local':
       source    => "docker",
       ipaddress => "10.1.1.3";
     'blue.skull.local':
       source    => "docker",
-      ipaddress => "10.1.1.5";
+      ipaddress => "10.1.1.4";
     'ansible.skull.local':
       ipaddress => "10.1.1.241";
     'ddns.skull.local':
