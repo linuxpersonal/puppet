@@ -15,7 +15,7 @@ class nodes::nagios {
       ipaddress => "10.1.1.3";
     'blue.skull.local':
       source    => "docker",
-      ipaddress => "10.1.1.4";
+      ipaddress => "10.1.1.5";
     'ansible.skull.local':
       ipaddress => "10.1.1.241";
     'ddns.skull.local':
