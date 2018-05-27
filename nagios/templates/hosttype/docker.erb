@@ -1,0 +1,24 @@
+define host{
+            use                     linux-server,host-pnp
+            host_name               <%= @hostname %>
+            alias                   <%= @hostname %>
+            address                 <%= @ipaddress %>
+}
+
+define service{
+            use                             local-service,srv-pnp
+            host_name                       <%= @hostname %>
+            service_description             Total Processes
+            check_command                   check_nrpe!check_total_procs
+            contact_groups                  admins
+            contacts                        nagiosadmin
+}
+
+define service{
+            use                             local-service,srv-pnp
+            host_name                       <%= @hostname %>
+            service_description             SSH Check
+            check_command                   check_nrpe!check_ssh
+            contact_groups                  admins
+            contacts                        nagiosadmin
+}
