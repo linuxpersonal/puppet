@@ -17,13 +17,11 @@ class nginx(
 
 ) inherits nginx::params {
 
-include nginx::params
+  class { '::nginx::repo': } 
+  -> class { '::nginx::package': } 
+  ~> class { '::nginx::service': }
 
-class { '::nginx::repo': } 
--> class { '::nginx::package': } 
-~> class { '::nginx::service': }
-
-file { $docroot:
+  file { $docroot:
     ensure =>  directory,
     recurse => true,
   }
@@ -33,18 +31,17 @@ file { $docroot:
     recurse => true,
   }
 
-file { $conf_dir:
-  notify  => Service['nginx'],
-  ensure  => 'present',
-  content => template("nginx/conf/nginx.conf.erb"),
+  file { $conf_dir:
+    notify  => Service['nginx'],
+    ensure  => 'present',
+    content => template("nginx/conf/nginx.conf.erb"),
   }
 
-file { $log_dir:
+  file { $log_dir:
     ensure  => 'present',
     owner   => 'nginx',
     group   => 'nginx',
     recurse => true,
   }
-
 
 }
