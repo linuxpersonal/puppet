@@ -14,13 +14,29 @@ class nginx(
     $conf_pidfile   = hiera('nginx::con_pidfile'),
     $vhost_dir      = hiera('nginx::vhost_dir'),
     $conf_dir       = hiera('nginx::conf_dir'),
-    $vhosts         = hiera('nginx::vhosts'),
 
 ) inherits nginx::params {
+
+include nginx::params
+
+class { '::nginx::repo': } 
+-> class { '::nginx::package': } 
+~> class { '::nginx::service': }
 
 file { $docroot:
     ensure =>  directory,
     recurse => true,
+  }
+
+  file { $vhost_dir:
+    ensure  => directory,
+    recurse => true,
+  }
+
+file { $conf_dir:
+  notify  => Service['nginx'],
+  ensure  => 'present',
+  content => template("nginx/conf/nginx.conf.erb"),
   }
 
 file { $log_dir:
@@ -30,9 +46,5 @@ file { $log_dir:
     recurse => true,
   }
 
-class { '::nginx::repo': } 
--> class { '::nginx::package': } 
--> class { '::nginx::vhosts': } 
-~> class { '::nginx::service': }
 
 }

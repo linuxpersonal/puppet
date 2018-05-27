@@ -1,37 +1,30 @@
-class nginx::vhosts (
-  $nginx_ip   = $::nginx::nginx_ip,
-  $vhost_dir  = $::nginx::vhost_dir,
-  $conf_file  = $::nginx::conf_file,
-  $mode       = $::nginx::conf_mode,
-  $owner      = $::nginx::conf_owner,
-  $group      = $::nginx::conf_group,
-  $vhosts     = $::nginx::vhosts,
+define nginx::vhosts (
+  $vhost_dir  = "/etc/nginx/sites-enabled",
+  $content    = "nginx/vhosts/default.conf.erb",
+  $doc_root   = "/var/www/html/$name",
+  $domain     = $name,
+  $source     = false,
+  $alias      = undef,
+  $hostname   = "${::fqdn}",
 ) {
-
-  file { $vhost_dir:
+  
+  file { $doc_root:
     ensure  => directory,
     recurse => true,
   }
 
-$vhosts.each |String $vhostname|{
-  file { "${vhost_dir}/${vhostname}.conf":
-    notify  => Service['nginx'],
-    ensure  => 'present',
-    replace => 'no',
-    mode    => $mode,
-    owner   => $owner,
-    group   => $group,
-    content => template("nginx/vhosts/default.conf.erb"),
+  if $source {
+    file { "${vhost_dir}/$name.conf":
+      notify    => Service['nginx'],
+      ensure    => 'present',
+      source    => "puppet:///modules/nodes/$hostname/$name.conf",
+    }
+  } else {
+    file { "${vhost_dir}/$name.conf":
+      notify    => Service['nginx'],
+      ensure    => 'present',
+      content   => template($content),
     }
   }
 
-file { "/etc/nginx/nginx.conf":
-  notify  => Service['nginx'],
-  ensure  => 'present',
-  replace => 'no',
-  mode    => $mode,
-  owner   => $owner,
-  group   => $group,
-  content => template("nginx/conf/nginx.conf.erb"),
-  }
 }

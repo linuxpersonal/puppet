@@ -11,11 +11,10 @@ nginx::con_group     : 'root'
 nginx::servername    : "%{::fqdn}"
 nginx::con_pidfile   : '/run/nginx.pid'
 nginx::conf_dir      : '/etc/nginx/nginx.conf'
-nginx::vhost_dir     : '/etc/nginx/sites-enabled'  
-nginx::redhat_nginx  : ['nginx', 'mariadb', 'mariadb-server', 'php', 'php-fpm', 'php-common','certbot', 'python2-certbot-nginx']
+nginx::redhat_nginx  : ['nginx', 'php', 'php-fpm', 'php-common','certbot', 'python2-certbot-nginx']
 nginx::redhat_php    : ['php-pear', 'php-devel', 'php-pdo', 'php-mysqlnd', 'php-pgsql', 'php-gd', 'php-mbstring', 'php-mcrypt', 'php-xml']
-nginx::redhat_service: ['nginx', 'mariadb', 'php-fpm']
-nginx::debian_nginx  : ['nginx', 'mariadb', 'mariadb-server', 'php', 'php-fpm', 'php-common']
+nginx::redhat_service: ['nginx', 'php-fpm']
+nginx::debian_nginx  : ['nginx', 'php', 'php-fpm', 'php-common']
 nginx::debian_php    : ['php-pear', 'php-devel', 'php-pdo', 'php-devel', 'php-mysqlnd', 'php-gd', 'php-mbstring', 'php-mcrypt', 'php-xml']
-nginx::debian_service: ['nginx', 'mariadb', 'php-fpm']
-nginx::vhosts        : ["%{::ipaddress}", "%{::fqdn}"]
+nginx::debian_service: ['nginx', 'php-fpm']
+nginx::vhost_dir     : "/etc/nginx/sites-enabled"
