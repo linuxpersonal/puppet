@@ -1,7 +1,6 @@
-class nodes::management {
+class nodes::red {
 
   include defaults
-  
   ohmyzsh::install { 'root': }
 
 }
