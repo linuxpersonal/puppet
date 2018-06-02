@@ -9,8 +9,6 @@ $managehome = true,
 $ensure = "present",
 ) {
 
-  #  if $trusted['certname'] == 'ansible.skull.local' {
-  
   if $shellbash { $shell = '/bin/bash' }
   else { $shell = '/bin/false' }
 
@@ -37,10 +35,10 @@ $ensure = "present",
     }
   }
 
-    if $nopasswd {
-      sudo::conf { $name: 
-        content => "%${name} ALL=(ALL) NOPASSWD: ALL",
-      }
+  if $nopasswd {
+    sudo::conf { $name: 
+      content => "%${name} ALL=(ALL) NOPASSWD: ALL",
+    }
   }
 }
 
