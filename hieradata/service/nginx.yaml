@@ -1,20 +1,39 @@
 ---
 # Nginx Hiera
 
-nginx::docroot       : '/var/www/html'
-nginx::logdir        :  '/var/log/nginx/access.log'
-nginx::nginx_ip      : "%{::ipaddress}"
-nginx::con_file      : 'default.conf'
-nginx::con_mode      : '0664'
-nginx::con_owner     : 'root'
-nginx::con_group     : 'root'
 nginx::servername    : "%{::fqdn}"
-nginx::con_pidfile   : '/run/nginx.pid'
-nginx::conf_dir      : '/etc/nginx/nginx.conf'
-nginx::redhat_nginx  : ['nginx', 'php', 'php-fpm', 'php-common','certbot', 'python2-certbot-nginx']
-nginx::redhat_php    : ['php-pear', 'php-devel', 'php-pdo', 'php-mysqlnd', 'php-pgsql', 'php-gd', 'php-mbstring', 'php-mcrypt', 'php-xml']
-nginx::redhat_service: ['nginx', 'php-fpm']
-nginx::debian_nginx  : ['nginx', 'php', 'php-fpm', 'php-common']
-nginx::debian_php    : ['php-pear', 'php-devel', 'php-pdo', 'php-devel', 'php-mysqlnd', 'php-gd', 'php-mbstring', 'php-mcrypt', 'php-xml']
-nginx::debian_service: ['nginx', 'php-fpm']
 nginx::vhost_dir     : "/etc/nginx/sites-enabled"
+nginx::redhat_nginx  : 'nginx' 
+nginx::redhat_php    : [
+    'php',
+    'php-fpm',
+    'php-pear', 
+    'php-devel', 
+    'php-pdo', 
+    'php-mysqlnd', 
+    'php-pgsql', 
+    'php-gd', 
+    'php-mbstring', 
+    'php-mcrypt', 
+    'php-xml' ]
+nginx::redhat_service: [
+    'nginx', 
+    'php-fpm' ]
+nginx::debian_nginx  : [
+    'nginx', 
+    'php', 
+    'php-fpm', 
+    'php-common' ]
+nginx::debian_php    : [
+    'php-pear', 
+    'php-devel', 
+    'php-pdo', 
+    'php-devel', 
+    'php-mysqlnd', 
+    'php-gd', 
+    'php-mbstring', 
+    'php-mcrypt', 
+    'php-xml' ]
+nginx::debian_service: [
+    'nginx', 
+    'php-fpm' ]
