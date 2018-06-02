@@ -5,6 +5,8 @@ class nodes::red {
   
   ohmyzsh::install { 'root': }
 
+  nginx::phpfpm { 'php71': }
+
   nginx::vhosts { 
     "dokuwiki":
       domains => [ 

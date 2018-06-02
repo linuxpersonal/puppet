@@ -8,8 +8,8 @@ class nginx(
 
 ) inherits nginx::params {
 
+  package{ "nginx": }
   include nginx::repo
-  include nginx::package
   include nginx::service
 
   file { $vhost_dir:

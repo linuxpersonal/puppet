@@ -1,10 +1,9 @@
-class nginx::package (
-  $package_nginx = $::nginx::package_nginx,
+define nginx::phpfpm (
   $package_php   = $::nginx::package_php,
 ) {
-    package { [ $package_nginx, $package_php ]:
+    package { $package_php:
         ensure          => present,
-        install_options => [ { '--enablerepo' => 'remi-php71' } ],
+        install_options => [ { '--enablerepo' => "remi-$name" } ],
         require         => Package[ 'remi-release' ]
         } 
 }

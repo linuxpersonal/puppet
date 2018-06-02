@@ -3,7 +3,6 @@
 
 nginx::servername    : "%{::fqdn}"
 nginx::vhost_dir     : "/etc/nginx/sites-enabled"
-nginx::redhat_nginx  : 'nginx' 
 nginx::redhat_php    : [
     'php',
     'php-fpm',
