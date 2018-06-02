@@ -1,16 +1,21 @@
 define nginx::vhosts (
+  $domains,
   $vhost_dir  = "/etc/nginx/sites-enabled",
   $content    = "nginx/vhosts/default.conf.erb",
-  $doc_root   = "/var/www/html/$name",
-  $domain     = $name,
+  $doc_root   = "/home/$name/public_html",
   $source     = false,
-  $alias      = undef,
   $hostname   = "${::fqdn}",
+  $user_add   = true,
 ) {
-  
+
+  $primary_domain = $domains[0]
+
+  if $user_add {
+    useradd::user { "$name": }  
+  }
+
   file { $doc_root:
     ensure  => directory,
-    recurse => true,
   }
 
   if $source {

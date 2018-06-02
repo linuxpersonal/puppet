@@ -6,13 +6,17 @@ class nodes::red {
   ohmyzsh::install { 'root': }
 
   nginx::vhosts { 
-    "dokuwiki.skull.local":
-      alias => [ 
-        "doku.skull.local",
-        "www.doku.skull.local", 
+    "dokuwiki":
+      domains => [ 
+        "dokuwiki.skull.local",
+        "doku.skull.local", 
       ];
-    "red.skull.local":
-      source => true;
+    "red":
+      domains => "red.skull.local",
+      source  => true;
+    "homeserver":
+      domains => "homeserver.skull.local",
+      source  => true;
   }
 
 }
