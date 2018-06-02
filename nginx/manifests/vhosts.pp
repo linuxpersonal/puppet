@@ -8,8 +8,6 @@ define nginx::vhosts (
   $user_add   = true,
 ) {
 
-  $primary_domain = $domains[0]
-
   if $user_add {
     useradd::user { "$name": }  
   }
