@@ -1,8 +1,7 @@
 class nodes::red {
 
-  include defaults
   include nginx
-  
+
   ohmyzsh::install { 'root': }
 
   nginx::phpfpm { 'php71': }

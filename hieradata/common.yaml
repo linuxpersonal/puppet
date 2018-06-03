@@ -1,4 +1,6 @@
 ---
+classes           : "defaults"
+
 service_type      : "default"
 contributer_name  : "Chris Do"
 

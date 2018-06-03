@@ -1,6 +1,8 @@
 ---
 classes: nodes::ddns
 
+## dhcpd::conf
+
 dhcpd::manual:
     - host:    'ovirtnuc'
       fqdn:    'ovirtnuc.skull.local'

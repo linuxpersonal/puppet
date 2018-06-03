@@ -1,6 +1,5 @@
 class nodes::nagios {
 
-  include defaults
   include apache
   include nagios::server
 

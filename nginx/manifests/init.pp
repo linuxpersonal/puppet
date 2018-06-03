@@ -1,10 +1,10 @@
 class nginx( 
 
-    $package_nginx  = $::nginx::params::package_nginx,
-    $service_name   = $::nginx::params::service_name,
-    $package_php    = $::nginx::params::package_php,
-    $servername     = hiera('nginx::servername'),
-    $vhost_dir      = hiera('nginx::vhost_dir'),
+  $package_nginx  = $::nginx::params::package_nginx,
+  $service_name   = $::nginx::params::service_name,
+  $package_php    = $::nginx::params::package_php,
+  $servername     = hiera('nginx::servername'),
+  $vhost_dir      = hiera('nginx::vhost_dir'),
 
 ) inherits nginx::params {
 

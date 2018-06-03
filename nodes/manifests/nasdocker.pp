@@ -1,3 +1,11 @@
 class nodes::nasdocker {
-include defaults
+
+  useradd::user { "doc":
+    nopasswd => true,
+  }
+
+  package { [
+    "axel",
+    ]: }
+
 }
