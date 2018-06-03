@@ -1,7 +1,7 @@
 ---
 classes: nodes::puppet
 
-### Variables ###
+## ohmyzsh::install
 ohmyzsh::theme : cute-theme
 ohmyzsh::alias :
     - name: prun

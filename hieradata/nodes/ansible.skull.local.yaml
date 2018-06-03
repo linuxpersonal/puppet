@@ -1,9 +1,7 @@
 ---
 classes: nodes::ansible
 
+## defaults
 service_type: ansible
-
-# Defaults values
-
 ssh::sshport: '22'
 ssh::permitroot: 'yes'

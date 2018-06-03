@@ -1,6 +1,5 @@
 ---
-# Red.skull.local
-
 classes: nodes::red
 
+## defaults
 service_type: nginx

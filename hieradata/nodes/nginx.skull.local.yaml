@@ -1,5 +1,8 @@
 ---
 classes: nodes::nginx
 
+## defaults
 service_type   : nginx
+
+## ohmyzsh::install
 ohmyzsh::theme : cute-theme

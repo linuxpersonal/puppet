@@ -1,4 +1,5 @@
 ---
 classes: nodes::nagios
 
+## defaults
 service_type: apache
