@@ -5,10 +5,7 @@ class defaults::packages (
   package { $def_packages:
     ensure  => present,
   }
-  package { 'zabbix-release':
-    ensure => absent,
-  }
-  package { 'zabbix-agent':
+  package { $removal:
     ensure => absent,
   }
 }
