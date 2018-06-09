@@ -17,10 +17,7 @@ class nodes::red {
       domains => "red.skull.local",
       source  => true;
     "homeserver":
-      domains => [
-        "homeserver.skull.local",
-        "www.homeserver.skull.local",
-      ],
+      domains => "homeserver.skull.local",
       source  => true;
   }
 
