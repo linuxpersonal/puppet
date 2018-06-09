@@ -1,4 +1,4 @@
-define nginx::phpfpm (
+define nginx::php (
   $package_php   = $::nginx::package_php,
 ) {
     package { $package_php:
