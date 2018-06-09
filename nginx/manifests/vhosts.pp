@@ -20,7 +20,7 @@ define nginx::vhosts (
     file { "${vhost_dir}/$name.conf":
       notify    => Service['nginx'],
       ensure    => 'present',
-      source    => "puppet:///modules/nodes/$hostname/$name.conf",
+      content   => template("nodes/$hostname/$name.conf"),
     }
   } else {
     file { "${vhost_dir}/$name.conf":

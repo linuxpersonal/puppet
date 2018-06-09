@@ -11,12 +11,16 @@ class nodes::red {
       domains => [ 
         "dokuwiki.skull.local",
         "doku.skull.local", 
-      ];
+      ],
+      source  => true;
     "red":
       domains => "red.skull.local",
       source  => true;
     "homeserver":
-      domains => "homeserver.skull.local",
+      domains => [
+        "homeserver.skull.local",
+        "www.homeserver.skull.local",
+      ],
       source  => true;
   }
 
