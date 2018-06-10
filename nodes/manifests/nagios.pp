@@ -4,8 +4,7 @@ class nodes::nagios {
   include nagios::server
 
   nagios::clients::add { 
-    'puppet.skull.local':
-      ipaddress => "10.1.1.208";
+    ## Dockers
     'red.skull.local':
       source    => "docker",
       ipaddress => "10.1.1.2";
@@ -15,12 +14,18 @@ class nodes::nagios {
     'blue.skull.local':
       source    => "docker",
       ipaddress => "10.1.1.4";
+    'magento.skull.local':
+      source    => "docker",
+      ipaddress => "10.1.1.6";
+    ## VMs
     'ansible.skull.local':
       ipaddress => "10.1.1.241";
     'ddns.skull.local':
       ipaddress => "10.1.1.60"; 
     'kvm.skull.local':
       ipaddress => "10.1.1.101"; 
+    'puppet.skull.local':
+      ipaddress => "10.1.1.208";
     'squid.skull.local':
       ipaddress => "10.1.1.210"; 
     'sickrage.skull.local':

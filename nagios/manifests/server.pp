@@ -11,9 +11,6 @@ class nagios::server (
   }
 
   file {
-    "/usr/local/nagios/etc/nagios.cfg":
-      ensure => present,
-      source => 'puppet:///modules/nagios/config/nagios.cfg';
     "/usr/local/nagios/etc/objects/commands.cfg":
       ensure => present,
       source => 'puppet:///modules/nagios/config/commands.cfg';
@@ -23,6 +20,9 @@ class nagios::server (
     "/usr/lib64/nagios/plugins":
       ensure => link,
       target => "/usr/local/nagios/libexec",
+    "/usr/local/nagios/etc/nagios.cfg":
+      ensure => present,
+      source => 'puppet:///modules/nagios/config/nagios.cfg';
   }
 
 }

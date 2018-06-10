@@ -1,0 +1,3 @@
+class nodes::magento {
+
+}
