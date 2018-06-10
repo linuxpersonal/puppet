@@ -3,3 +3,12 @@ classes: nodes::red
 
 ## defaults
 service_type: nginx
+
+## ohmyzsh
+ohmyzsh::alias :
+    - name:    prun
+      command: puppet agent -t 
+    - name:    nu
+      command: cd /etc/nginx/sites-enabled
+    - name:    vim
+      command: vi
