@@ -27,7 +27,7 @@ class nagios::client (
 
   file { '/etc/nagios/nrpe.cfg': 
     ensure  => present,
-    notify  => Service['nrpe'],
+    notify  => Service[$nrpepkg],
     content => template("nagios/nrpe/${nrpe_conf}"),
     require => Package[$nrpepkg],
     }          

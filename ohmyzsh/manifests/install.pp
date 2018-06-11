@@ -4,8 +4,11 @@ define ohmyzsh::install (
 
   include ohmyzsh::config
 
-  if $user == 'root' { $homedir = "/${user}/" }
-  else { $homedir = "/home/${user}/" }
+  if $user == 'root' { 
+    $homedir = "/${user}/" 
+  } else { 
+    $homedir = "/home/${user}/" 
+  }
   
   file { "${homedir}/.ohmyzsh.py":
     source  => 'puppet:///modules/ohmyzsh/ohmyzsh.py',
