@@ -371,13 +371,13 @@ connection_timeout=300
 include_dir=/etc/nrpe.d/
 
 ### Inactive Commands  ###
+command[check_zombie_procs]=/usr/lib64/nagios/plugins/check_procs -w 5 -c 10 -s Z
 
 ### ACTIVE COMMANDS ###
-command[check_users]=/usr/lib64/nagios/plugins/check_users -w 5 -c 10
-command[check_load]=/usr/lib64/nagios/plugins/check_load -w 15,10,5 -c 30,25,20
-command[check_root]=/usr/lib64/nagios/plugins/check_disk -w 20% -c 10% -p / -m
-command[check_swap]=/usr/lib64/nagios/plugins/check_swap -w 20% -c 10%
-command[check_total_procs]=/usr/lib64/nagios/plugins/check_procs -w 200 -c 250
-command[check_zombie_procs]=/usr/lib64/nagios/plugins/check_procs -w 5 -c 10 -s Z
-command[check_mem]=/usr/lib64/nagios/plugins/check_mem  -f -w 2.5 -c 1.5
+command[check_users]=/usr/lib64/nagios/plugins/check_users -w <%= @users_w %> -c <%= @users_c %>
+command[check_load]=/usr/lib64/nagios/plugins/check_load -w <%= @load_w %> -c <%= @load_c %>
+command[check_root]=/usr/lib64/nagios/plugins/check_disk -w <%= @diskroot_w %> -c <%= @diskroot_c %> -p / -m
+command[check_swap]=/usr/lib64/nagios/plugins/check_swap -w <%= @swap_w %> -c <%= @swap_c %>
+command[check_total_procs]=/usr/lib64/nagios/plugins/check_procs -w <%= @procs_w %> -c <%= @procs_c %>
+command[check_mem]=/usr/lib64/nagios/plugins/check_mem  -f -w <%= @mem_w %> -c <%= @mem_c %>
 command[check_ssh]=/usr/lib64/nagios/plugins/check_ssh -H <%= @ipaddress %>
