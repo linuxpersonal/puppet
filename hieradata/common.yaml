@@ -16,3 +16,5 @@ ohmyzsh::alias    :
 
 squid::squidip    : "10.1.1.210"
 squid::squidport  : "3128"
+
+repo::repo        : "10.1.1.2"
