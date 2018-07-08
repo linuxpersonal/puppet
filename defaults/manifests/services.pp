@@ -9,7 +9,7 @@ class defaults::services (
     
     schedule {'update-daily':
      period  => daily,
-     range   => '0:00 - 01:00',
+     range   => '0:00 - 02:00',
     }
   
     exec { '/usr/bin/updatedb':
