@@ -5,20 +5,17 @@ class defaults {
   include defaults::services
   include defaults::sshkeys
   
-  
+  unless $::fqdn == 'nagios.skull.local' {
+    include nagios::client
+  }
+
   case $::osfamily {
     'Redhat': {
       include sshservice::config      
       include servicetype::type
-      defaults::yumconf { "proxy": squidproxy => true }
-      unless $::fqdn == 'nagios.skull.local' {
-        include nagios::client
-      }
+      include defaults::yumconf
     }
     'Debian': {
-      unless $::fqdn == 'nagios.skull.local' {
-        include nagios::client
-      }
     }   
   }   
 }
