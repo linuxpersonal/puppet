@@ -17,5 +17,7 @@ ohmyzsh::alias     :
 squid::squidproxy  : true
 squid::squidip     : "10.1.1.210"
 squid::squidport   : "3128"
+
 epel::epel_install : true
+
 repo::repo         : "10.1.1.2"
