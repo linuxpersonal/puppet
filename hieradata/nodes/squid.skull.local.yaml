@@ -1,5 +1,5 @@
 ---
-classes: nodes::ansible  
+classes: nodes::squid 
 
 ## squid::server
 squid::ipaddress : '10.1.1.210'
