@@ -1,8 +1,5 @@
 class nodes::nagios {
 
-  include apache
-  include nagios::server
-
   nagios::clients::add { 
     ## Dockers
     'red.skull.local':

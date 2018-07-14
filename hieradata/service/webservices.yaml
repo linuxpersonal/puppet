@@ -17,7 +17,7 @@ apache::con_mode       : '0664'
 apache::vhosts         : ["%{::fqdn}", 'test.com']
 apache::conf_dir       : '/etc/httpd/conf/httpd.conf'
 apache::vhost_dir      : '/etc/httpd/sites-enabled'  
-apache::redhat_apache  : ['httpd', 'php', 'php-common']
+apache::redhat_apache  : 'httpd'
 apache::redhat_service : 'httpd'
 apache::debian_apache  : 'apache2'
 apache::debian_service : 'apache2'
@@ -41,7 +41,6 @@ remiphp::redhat_php    : [
 php::debian_php    : [
     'php',
     'php-pear', 
-    'php-devel', 
     'php-pdo', 
     'php-devel', 
     'php-mysqlnd', 

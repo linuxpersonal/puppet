@@ -17,4 +17,4 @@ ohmyzsh::alias :
       command: vi
 
 ## PHP
-php::php_version: remi-php71
+remiphp::php_version: remi-php71

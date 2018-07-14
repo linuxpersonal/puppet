@@ -1,5 +1,5 @@
 class remiphp::install (
-  $version       = hiera(php::php_version, "remi-php56"),
+  $version       = hiera(remiphp::php_version, "remi-php56"),
   $service_name  = hiera(remiphp::service),
 ){
   include remiphp::repo

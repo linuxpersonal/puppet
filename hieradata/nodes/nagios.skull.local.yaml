@@ -1,5 +1,12 @@
 ---
-classes: nodes::nagios
+classes: 
+    - nodes::nagios
+    - apache
+    - nagios::server
+    - remiphp::install
 
 ## defaults
 service_type: webservices
+
+## PHP
+remiphp::php_version : remi-php70
