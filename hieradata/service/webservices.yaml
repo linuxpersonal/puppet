@@ -22,7 +22,7 @@ apache::redhat_service : 'httpd'
 apache::debian_apache  : 'apache2'
 apache::debian_service : 'apache2'
 
-## Remi PHP
+## PHP
 
 remiphp::service       : 'php-fpm'
 remiphp::phpfpm        : 'php-fpm'
@@ -38,7 +38,7 @@ remiphp::redhat_php    : [
     'php-mbstring', 
     'php-mcrypt', 
     'php-xml' ]
-remiphp::debian_php    : [
+php::debian_php    : [
     'php',
     'php-pear', 
     'php-devel', 

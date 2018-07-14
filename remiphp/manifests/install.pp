@@ -6,7 +6,7 @@ class remiphp::install (
 
   case $::osfamily {
     'RedHat', 'CentOS':  { $package_php = hiera('remiphp::redhat_php') }
-    /^(Debian|Ubuntu)$/: { $package_php = hiera('remiphp::debian_php')  }
+    /^(Debian|Ubuntu)$/: { warning ('Operating System not supported') }
     default:             { warning ('Operating System not supported') }
   }
 
