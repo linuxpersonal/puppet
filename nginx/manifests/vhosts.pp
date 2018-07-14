@@ -36,7 +36,4 @@ define nginx::vhosts (
       content   => template($content),
     }
   }
-
-  nginx::fpmpool { "$name": }
-
 }

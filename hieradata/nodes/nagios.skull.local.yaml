@@ -2,4 +2,4 @@
 classes: nodes::nagios
 
 ## defaults
-service_type: apache
+service_type: webservices

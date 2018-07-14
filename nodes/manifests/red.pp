@@ -21,6 +21,13 @@ class nodes::red {
       proxypass => "white.skull.local:8080";
   }
 
+  remiphp::fpmpool { [
+    'dokuwiki',
+    'red',
+    'homeserver',
+    'jenkins', ]: 
+  }
+
   crontab::cron { "root":
     cronjobs => [ 
 

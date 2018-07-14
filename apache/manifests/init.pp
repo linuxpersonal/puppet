@@ -2,7 +2,6 @@ class apache(
 
     $package_apache = $::apache::params::package_apache,
     $service_name   = $::apache::params::service_name,
-    $package_php    = $::apache::params::package_php,
     $docroot        = hiera('apache::docroot'),
     $conf_file      = hiera('apache::con_file'),
     $conf_mode      = hiera('apache::con_mode'),
@@ -21,8 +20,7 @@ file { $docroot:
     recurse => true,
   }
 
-class    { '::apache::repo': } 
--> class { '::apache::package': } 
+class { '::apache::package': } 
 -> class { '::apache::vhosts': } 
 ~> class { '::apache::service': }
 

@@ -1,10 +1,11 @@
 ---
 classes: 
     - nodes::red
-    - nginx::php
+    - nginx
+    - remiphp::install
 
 ## defaults
-service_type: nginx
+service_type: webservices
 
 ## ohmyzsh
 ohmyzsh::alias :

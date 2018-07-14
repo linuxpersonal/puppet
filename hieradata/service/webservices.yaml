@@ -1,0 +1,51 @@
+---
+# Nginx Hiera
+
+nginx::servername    : "%{::fqdn}"
+nginx::vhost_dir     : "/etc/nginx/sites-enabled"
+nginx::service       : 'nginx'
+
+# Apache Hiera
+
+apache::docroot        : '/var/www/html'
+apache::logdir         : '/var/log/apache/access.log'
+apache::apache_ip      : "%{::ipaddress}"
+apache::con_file       : 'httpd.conf'
+apache::con_owner      : 'root'
+apache::con_group      : 'root'
+apache::con_mode       : '0664'
+apache::vhosts         : ["%{::fqdn}", 'test.com']
+apache::conf_dir       : '/etc/httpd/conf/httpd.conf'
+apache::vhost_dir      : '/etc/httpd/sites-enabled'  
+apache::redhat_apache  : ['httpd', 'php', 'php-common']
+apache::redhat_service : 'httpd'
+apache::debian_apache  : 'apache2'
+apache::debian_service : 'apache2'
+
+## Remi PHP
+
+remiphp::service       : 'php-fpm'
+remiphp::phpfpm        : 'php-fpm'
+remiphp::redhat_php    : [
+    'php',
+    'php-fpm',
+    'php-pear', 
+    'php-devel', 
+    'php-pdo', 
+    'php-mysqlnd', 
+    'php-pgsql', 
+    'php-gd', 
+    'php-mbstring', 
+    'php-mcrypt', 
+    'php-xml' ]
+remiphp::debian_php    : [
+    'php',
+    'php-pear', 
+    'php-devel', 
+    'php-pdo', 
+    'php-devel', 
+    'php-mysqlnd', 
+    'php-gd', 
+    'php-mbstring', 
+    'php-mcrypt', 
+    'php-xml' ]

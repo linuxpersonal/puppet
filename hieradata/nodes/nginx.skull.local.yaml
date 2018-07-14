@@ -4,7 +4,7 @@ classes:
     - ohmyzsh::install
 
 ## defaults
-service_type   : nginx
+service_type   : webservices
 
 ## ohmyzsh::install
 ohmyzsh::theme : cute-theme

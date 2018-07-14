@@ -1,7 +1,7 @@
-define nginx::fpmpool (
-  $phpfpm_dir = "/etc/php-fpm.d/",
-  $content    = "nginx/conf/phpfpm.conf.erb",
-) {
+define remiphp::fpmpool (
+  $phpfpm_dir   = "/etc/php-fpm.d/",
+  $content      = "remiphp/conf/phpfpm.conf.erb",
+){
 
     file { "${phpfpm_dir}/$name.conf":
       notify    => Service['php-fpm'],
@@ -9,3 +9,4 @@ define nginx::fpmpool (
       content   => template($content),
     }
 }
+

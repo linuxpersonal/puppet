@@ -1,0 +1,27 @@
+[<%= @name %>]
+user = <%= @name %>
+
+listen = /var/run/php-fpm/<%= @name %>.sock
+listen.mode = 0666
+
+pm = ondemand
+
+pm.max_children = 3
+pm.process_idle_timeout = 30s
+
+access.log = /var/log/php-fpm/<%= @name %>_access_log
+access.format = "%R - %u %t "%m %r" %s"
+
+slowlog = /var/log/php-fpm/<%= @name %>_slow_log
+request_slowlog_timeout = 2s
+
+php_flag[display_errors] = off
+php_admin_value[error_log] = /var/log/php-fpm/<%= @name %>_error_log
+php_admin_flag[log_errors] = on
+catch_workers_output = yes
+
+; Safety net
+pm.max_requests = 1024
+
+pm.status_path = /phpfpm-status
+ping.path = /phpfpm-ping
