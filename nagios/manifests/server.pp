@@ -3,12 +3,10 @@ class nagios::server (
   $nagiospkgs = [ 'nagios-common', 'nagios-plugins-all','nagios-plugins-nrpe' ]
 ){
 
-  package { 
-    $basepkgs:
-    ensure => present;
-    $nagiospkgs:
-    ensure => present;
-  }
+  package { [ 
+    $basepkgs,
+    $nagiospkgs, 
+  ]: }
 
   file {
     "/usr/local/nagios/etc/objects/commands.cfg":
