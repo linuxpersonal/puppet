@@ -1,5 +1,7 @@
 ---
-classes: nodes::red
+classes: 
+    - nodes::red
+    - nginx::php
 
 ## defaults
 service_type: nginx
@@ -12,3 +14,6 @@ ohmyzsh::alias :
       command: cd /etc/nginx/sites-enabled
     - name:    vim
       command: vi
+
+## PHP
+php::php_version: remi-php71

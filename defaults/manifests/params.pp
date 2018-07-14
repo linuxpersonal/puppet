@@ -5,7 +5,6 @@ class defaults::params {
     $def_packages = [
       'telnet',
       'epel-release',
-      'zsh',
       'links',
       'wget',
       'htop',
@@ -26,7 +25,6 @@ class defaults::params {
     'Debian': {
     $def_packages = [
       'telnet',
-      'zsh',
       'links',
       'wget',
       'htop',

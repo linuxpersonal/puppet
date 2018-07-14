@@ -1,11 +1,14 @@
 class defaults::packages (
   $def_packages = $::defaults::params::def_packages,
-  $removal = [ 'zabbix-agent', 'zabbix-release' ],
+  $removal = undef,
 ) {
   package { $def_packages:
     ensure  => present,
   }
-  package { $removal:
-    ensure => absent,
+
+  if $removal {
+    package { $removal:
+      ensure => absent,
+    }
   }
 }

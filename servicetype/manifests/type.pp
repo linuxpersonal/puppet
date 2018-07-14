@@ -1,5 +1,5 @@
 class servicetype::type (
-	$service_type = hiera('service_type')
+	$service_type = hiera('service_type',undef)
 ) {
 
 	file { [
@@ -9,10 +9,12 @@ class servicetype::type (
 		]:
 		ensure  => directory,
 		recurse => true,
-	}                                                                                                                                                                                                                                              
-	file { '/etc/puppetlabs/facter/facts.d/service.txt':
-		ensure  => file,
-		content => "service=${service_type}",
 	}
-
+  
+  if $service_type {
+    file { '/etc/puppetlabs/facter/facts.d/service.txt':
+      ensure  => file,
+      content => "service=${service_type}",
+    }
+  }
 }

@@ -4,6 +4,7 @@ define nginx::vhosts (
   $content    = "nginx/vhosts/default.conf.erb",
   $doc_root   = "/home/$name/public_html",
   $source     = false,
+  $proxypass  = undef,
   $hostname   = "${::fqdn}",
   $user_add   = true,
 ) {
@@ -22,6 +23,12 @@ define nginx::vhosts (
       ensure    => 'present',
       content   => template("nodes/$hostname/$name.conf"),
     }
+  } elsif $proxypass {
+    file { "${vhost_dir}/$name.conf":
+      notify    => Service['nginx'],
+      ensure    => 'present',
+      content   => template("nodes/$hostname/proxypass.conf"),
+    } 
   } else {
     file { "${vhost_dir}/$name.conf":
       notify    => Service['nginx'],

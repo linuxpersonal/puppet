@@ -2,27 +2,23 @@ class nodes::red {
 
   include nginx
 
-  ohmyzsh::install { 'root': }
-
-  nginx::php { 'php71': }
-
   nginx::vhosts { 
     "dokuwiki":
       domains => [ 
         "dokuwiki.skull.local",
-        "doku.skull.local", 
-      ],
+        "doku.skull.local", ],
       source  => true;
     "red":
       domains => [
         "red.skull.local",
-        "repo.skull.local",
-        "10.1.1.2",
-      ],
+        "repo.skull.local" ],
       source  => true;
     "homeserver":
-      domains => "homeserver.skull.local",
-      source  => true;
+      domains   => "nas.skull.local",
+      proxypass => "10.1.1.40:8888";
+    "jenkins":
+      domains   => "jenkins.skull.local",
+      proxypass => "white.skull.local:8080";
   }
 
   crontab::cron { "root":

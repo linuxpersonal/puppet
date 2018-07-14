@@ -2,7 +2,7 @@ class defaults::yumconf (
 $squidproxy   = hiera('squid::squidproxy', false),
 $squidip      = hiera('squid::squidip'),
 $squidport    = hiera('squid::squidport'),
-$epel_install = hiera('epel::epel_install', false),
+$epel_install = hiera('epel::epel_install', true),
 $repo         = hiera('repo::repo'),
 ){
   file { "/etc/yum.conf":

@@ -1,13 +1,10 @@
 ---
 classes            : "defaults"
 
-service_type       : "default"
 contributer_name   : "Chris Do"
 
 ssh::sshport       : '22'
 ssh::permitroot    : 'yes'
-
-nagios::root       : '/dev/mapper/centos-root'
 
 ohmyzsh::theme     : 'robbyrussell'
 ohmyzsh::alias     :
@@ -18,6 +15,4 @@ squid::squidproxy  : true
 squid::squidip     : "10.1.1.210"
 squid::squidport   : "3128"
 
-epel::epel_install : true
-
-repo::repo         : "10.1.1.2"
+repo::repo         : "repo.skull.local"

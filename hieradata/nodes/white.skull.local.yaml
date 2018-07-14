@@ -1,2 +1,5 @@
 ---
-classes: nodes::white
+classes: 
+    - nodes::white
+    - jenkins::server
+

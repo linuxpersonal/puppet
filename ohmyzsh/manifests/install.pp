@@ -1,8 +1,9 @@
-define ohmyzsh::install (
-  $user = $name
+class ohmyzsh::install (
+  $user     = hiera(ohmyzsh::user, "root"),
+  $packages = ["zsh", "git"],
 ){
 
-  include ohmyzsh::config
+  package { $packages: }
 
   if $user == 'root' { 
     $homedir = "/${user}/" 
@@ -16,8 +17,14 @@ define ohmyzsh::install (
     replace => 'no'
   }
 
+  exec { 'Export Var HOME' :
+    command => "/bin/bash -c \"export HOME=${homedir}\"",
+  }
+
   exec { 'Run ohmyzsh.py':
     command     => "/usr/bin/python ${homedir}.ohmyzsh.py",
     creates     => "${homedir}.oh-my-zsh",
   }
+  
+  include ohmyzsh::config
 }

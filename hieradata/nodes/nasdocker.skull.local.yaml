@@ -1,7 +1,13 @@
 ---
-classes: nodes::nasdocker
+classes: 
+    - nodes::nasdocker
+    - ohmyzsh::install
 
 ## Nagios Checks
 nagios::procs_w   : 250
 nagios::procs_c   : 300
 nagios::ipaddress : 10.1.1.240
+
+## Ohmyzsh
+ohmyzsh::user: root
+ohmyzsh::theme: cute-theme

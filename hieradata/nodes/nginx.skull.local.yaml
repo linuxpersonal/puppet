@@ -1,5 +1,7 @@
 ---
-classes: nodes::nginx
+classes: 
+    - nodes::nginx
+    - ohmyzsh::install
 
 ## defaults
 service_type   : nginx

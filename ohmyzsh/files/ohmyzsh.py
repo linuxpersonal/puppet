@@ -10,24 +10,11 @@ def main():
 
     osver = platform.linux_distribution()[0]
 
-    if osver == 'CentOS Linux':
-        package = 'yum'
-    elif osver == 'Ubuntu':
-        package = 'apt'
-
-    cmd1 = [package, 'install', '-y', 'zsh', 'wget', 'git']
     cmd2 = 'sh -c "$(wget https://raw.github.com/robbyrussell/'\
            'oh-my-zsh/master/tools/install.sh -O -)"'
     cmd3 = 'git clone https://github.com/zsh-users/'\
             'zsh-autosuggestions '\
             '$HOME/.oh-my-zsh/custom/plugins/zsh-autosuggestions'
-
-    ## Installing packages required for oh-my-zsh
-
-    try:
-        packages = s.Popen(cmd1, stdout=s.PIPE).communicate()[0]
-    except Exception as e:
-        print(e)
 
     if not os.path.exists('$HOME/.oh-my-zsh'):
         try:

@@ -1,5 +1,7 @@
 ---
-classes: nodes::puppet
+classes: 
+    - nodes::puppet
+    - ohmyzsh::install
 
 ## ohmyzsh::install
 ohmyzsh::theme : cute-theme
