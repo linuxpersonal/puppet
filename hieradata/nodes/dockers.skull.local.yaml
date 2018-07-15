@@ -1,0 +1,12 @@
+---
+classes: 
+    - nodes::dockers
+    - ohmyzsh::install
+
+## Nagios Checks
+nagios::procs_w   : 250
+nagios::procs_c   : 300
+nagios::ipaddress : 10.1.1.244
+
+## Ohmyzsh
+ohmyzsh::theme: cute-theme

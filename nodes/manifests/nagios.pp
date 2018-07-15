@@ -29,6 +29,8 @@ class nodes::nagios {
       ipaddress => "10.1.1.215"; 
     'nasdocker.skull.local':
       ipaddress => "10.1.1.240"; 
+    'dockers.skull.local':
+      ipaddress => "10.1.1.244"; 
     'cloud.linuxpersonal.com':
       source    => "webserver",
       ipaddress => "108.61.96.41"; 
