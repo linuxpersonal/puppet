@@ -1,45 +1,45 @@
-class apache::vhosts (
-  $docroot    = $::apache::docroot,
-  $vhost_dir  = $::apache::vhost_dir,
-  $conf_file  = $::apache::conf_file,
-  $conf_dir   = $::apache::conf_dir,
-  $mode       = $::apache::conf_mode,
-  $owner      = $::apache::conf_owner,
-  $group      = $::apache::conf_group,
-  $vhosts     = $::apache::vhosts,
-) {
+define apache::vhosts (
+  $domains,
+  $vhost_dir  = "/etc/httpd/sites-enabled",
+  $content    = "apache/vhosts/default.conf.erb",
+  $doc_root   = "/home/$name/public_html",
+  $source     = false,
+  $proxypass  = undef,
+  $hostname   = "${::fqdn}",
+  $user_add   = true,
+){
 
-  file { $vhost_dir:
+  if ! is_array($domains) {
+    $apache_domain = [$domains] 
+  } else {
+    $apache_domain = $domains
+  }
+
+  if $user_add {
+    useradd::user { "$name": }  
+  }
+
+  file { $doc_root:
     ensure  => directory,
-    recurse => true,
   }
 
-$vhosts.each |String $vhostname| {
-  file { "${vhost_dir}/${vhostname}":
-    notify  => Service['httpd'],
-    ensure  => 'present',
-    mode    => $mode,
-    owner   => $owner,
-    group   => $group,
-    content => template("apache/vhost.conf.erb"),
+  if $source {
+    file { "${vhost_dir}/$name.conf":
+      notify    => Service['httpd'],
+      ensure    => 'present',
+      content   => template("nodes/$hostname/$name.conf"),
     }
-  }
-
-$vhosts.each |String $vhostname| {
-  file { "${docroot}/${vhostname}":
-    ensure => 'directory',
-    owner  => 'apache',
-    group  => 'apache',
-    mode   => '0755',
+  } elsif $proxypass {
+    file { "${vhost_dir}/$name.conf":
+      notify    => Service['httpd'],
+      ensure    => 'present',
+      content   => template("nodes/$hostname/proxypass.conf"),
+    } 
+  } else {
+    file { "${vhost_dir}/$name.conf":
+      notify    => Service['httpd'],
+      ensure    => 'present',
+      content   => template($content),
     }
-  }
-
-file { "${conf_dir}":
-  notify  => Service['httpd'],
-  ensure  => 'present',
-  mode    => $mode,
-  owner   => $owner,
-  group   => $group,
-  content => template("apache/httpd.conf.erb"),
   }
 }

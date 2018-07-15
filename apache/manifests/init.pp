@@ -1,27 +1,22 @@
 class apache( 
 
-    $package_apache = $::apache::params::package_apache,
-    $service_name   = $::apache::params::service_name,
-    $docroot        = hiera('apache::docroot'),
-    $conf_file      = hiera('apache::con_file'),
-    $conf_mode      = hiera('apache::con_mode'),
-    $conf_owner     = hiera('apache::con_owner'), 
-    $conf_group     = hiera('apache::con_group'),
-    $vhosts         = hiera('apache::vhosts'),
-    $log_dir        = hiera('apache::logdir'),
-    $apace_ip       = hiera('apache::apache_ip'),
-    $vhost_dir      = hiera('apache::vhost_dir'),
-    $conf_dir       = hiera('apache::conf_dir'),
+  $service_name   = hiera('apache::service'),
+  $servername     = hiera('apache::servername'),
+  $vhost_dir      = hiera('apache::vhost_dir'),
 
-) inherits apache::params {
+){
+  package{ $service_name: }
+  
+  include apache::service
 
-file { $docroot:
-    ensure =>  directory,
+  file { $vhost_dir:
+    ensure  => directory,
     recurse => true,
   }
 
-class { '::apache::package': } 
--> class { '::apache::vhosts': } 
-~> class { '::apache::service': }
-
+  file { "/etc/${service_name}/conf/${service_name}.conf":
+    notify  => Service[$service_name],
+    ensure  => 'present',
+    content => template("apache/conf/httpd.conf.erb"),
+  }
 }

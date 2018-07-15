@@ -5,7 +5,7 @@ class apache::service (
     service { $service_name:
         enable  => true,
         ensure  => running,
-        require => Package[$service_name]
+        require => Package['httpd']
     }
 
 }

@@ -7,26 +7,15 @@ nginx::service       : 'nginx'
 
 # Apache Hiera
 
-apache::docroot        : '/var/www/html'
-apache::logdir         : '/var/log/apache/access.log'
-apache::apache_ip      : "%{::ipaddress}"
-apache::con_file       : 'httpd.conf'
-apache::con_owner      : 'root'
-apache::con_group      : 'root'
-apache::con_mode       : '0664'
-apache::vhosts         : "%{::fqdn}"
-apache::conf_dir       : '/etc/httpd/conf/httpd.conf'
-apache::vhost_dir      : '/etc/httpd/sites-enabled'  
-apache::redhat_apache  : 'httpd'
-apache::redhat_service : 'httpd'
-apache::debian_apache  : 'apache2'
-apache::debian_service : 'apache2'
+apache::servername   : "%{::fqdn}"
+apache::vhost_dir    : '/etc/httpd/sites-enabled'  
+apache::service      : 'httpd'
 
 ## PHP
 
-remiphp::service       : 'php-fpm'
-remiphp::phpfpm        : 'php-fpm'
-remiphp::redhat_php    : [
+remiphp::service     : 'php-fpm'
+remiphp::phpfpm      : 'php-fpm'
+remiphp::redhat_php  : [
     'php',
     'php-fpm',
     'php-pear', 
@@ -38,7 +27,7 @@ remiphp::redhat_php    : [
     'php-mbstring', 
     'php-mcrypt', 
     'php-xml' ]
-php::debian_php    : [
+php::debian_php      : [
     'php',
     'php-pear', 
     'php-pdo', 

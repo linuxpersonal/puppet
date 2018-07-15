@@ -36,4 +36,8 @@ class nodes::nagios {
       source    => "webnoswap",
       ipaddress => "45.32.242.149"; 
   }
+  apache::vhosts { 'nagios': 
+    domains => 'nagios.skull.local',
+    source  => true,
+  }
 }
