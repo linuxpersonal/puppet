@@ -3,7 +3,7 @@
 
 nginx::servername    : "%{::fqdn}"
 nginx::vhost_dir     : "/etc/nginx/sites-enabled"
-nginx::service       : 'nginx'
+nginx::service   : 'nginx'
 
 # Apache Hiera
 

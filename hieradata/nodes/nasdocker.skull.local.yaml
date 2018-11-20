@@ -4,10 +4,15 @@ classes:
     - ohmyzsh::install
 
 ## Nagios Checks
-nagios::procs_w   : 250
-nagios::procs_c   : 300
+nagios::procs_w   : 300
+nagios::procs_c   : 350
 nagios::ipaddress : 10.1.1.240
 
 ## Ohmyzsh
 ohmyzsh::user: root
 ohmyzsh::theme: cute-theme
+ohmyzsh::alias :
+    - name:    prun
+      command: puppet agent -t
+    - name:    dexec
+      command: docker exec -it

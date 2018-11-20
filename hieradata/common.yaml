@@ -15,4 +15,4 @@ squid::squidproxy  : true
 squid::squidip     : "10.1.1.210"
 squid::squidport   : "3128"
 
-repo::repo         : "repo.skull.local"
+repo::repo         : "red.skull.local"

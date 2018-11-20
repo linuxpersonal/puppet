@@ -5,15 +5,15 @@ class nodes::nagios {
     'red.skull.local':
       source    => "docker",
       ipaddress => "10.1.1.2";
+    'blue.skull.local':
+      source    => "docker",
+      ipaddress => "10.1.1.5";
     'white.skull.local':
       source    => "docker",
       ipaddress => "10.1.1.3";
-    'blue.skull.local':
-      source    => "docker",
-      ipaddress => "10.1.1.4";
     'magento.skull.local':
       source    => "docker",
-      ipaddress => "10.1.1.6";
+      ipaddress => "10.1.1.4";
     ## VMs
     'ansible.skull.local':
       ipaddress => "10.1.1.241";
@@ -37,6 +37,9 @@ class nodes::nagios {
     'linuxpersonal.com':
       source    => "webnoswap",
       ipaddress => "45.32.242.149"; 
+    'docskull.org':
+      source    => "webnoswap",
+      ipaddress => "101.0.75.149"; 
   }
   apache::vhosts { 'nagios': 
     domains => 'nagios.skull.local',

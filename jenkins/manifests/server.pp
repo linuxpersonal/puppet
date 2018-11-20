@@ -1,5 +1,5 @@
 class jenkins::server (
-  $packages = ['java','jenkins','initscripts'],
+  $packages = ['java-1.8.0-openjdk','jenkins','initscripts'],
 ){
   
   yumrepo { 'jenkins_repo':

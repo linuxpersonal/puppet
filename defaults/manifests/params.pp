@@ -17,7 +17,7 @@ class defaults::params {
       'chrony',
       'bind-utils',
       'ncdu',
-      'firewalld' ]
+      'bash-completion' ]
     $chronyd = 'chronyd'
     $update = '/usr/bin/yum update -y' 
       }
@@ -35,7 +35,8 @@ class defaults::params {
       'mlocate',
       'tmux',
       'chrony',
-      'ncdu' ]
+      'ncdu',
+      'bash-completion' ]
     $chronyd = 'chrony'
     $update = '/usr/bin/apt update && /usr/bin/upgrade -y' 
       }
